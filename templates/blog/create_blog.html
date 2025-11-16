@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Clean Blog - Create New Blog Post</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <!-- Custom CSS for create blog page -->
+        <link href="css/create-blog.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="post.html">Sample Post</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="create_blog.html">Create Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('assets/img/contact-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>Create New Blog Post</h1>
+                            <span class="subheading">Share your thoughts with the world</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>Fill out the form below to create a new blog post. All fields are required.</p>
+                        <div class="my-5">
+                            <form id="createBlogForm" action="#" method="POST">
+                                <!-- Blog Title -->
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="blogTitle" name="blogTitle" type="text" placeholder="Enter blog title..." required />
+                                    <label for="blogTitle">Blog Title</label>
+                                    <div class="invalid-feedback">A blog title is required.</div>
+                                </div>
+
+                                <!-- Blog Subtitle -->
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="blogSubtitle" name="blogSubtitle" type="text" placeholder="Enter blog subtitle..." required />
+                                    <label for="blogSubtitle">Blog Subtitle</label>
+                                    <div class="invalid-feedback">A subtitle is required.</div>
+                                </div>
+
+                                <!-- Author Name -->
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="authorName" name="authorName" type="text" placeholder="Enter your name..." required />
+                                    <label for="authorName">Author Name</label>
+                                    <div class="invalid-feedback">Author name is required.</div>
+                                </div>
+
+                                <!-- Category -->
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="category" name="category" required>
+                                        <option value="" selected disabled>Select a category...</option>
+                                        <option value="technology">Technology</option>
+                                        <option value="lifestyle">Lifestyle</option>
+                                        <option value="travel">Travel</option>
+                                        <option value="food">Food</option>
+                                        <option value="business">Business</option>
+                                        <option value="health">Health</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <label for="category">Category</label>
+                                    <div class="invalid-feedback">Please select a category.</div>
+                                </div>
+
+                                <!-- Featured Image URL -->
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="featuredImage" name="featuredImage" type="url" placeholder="Enter image URL..." />
+                                    <label for="featuredImage">Featured Image URL (optional)</label>
+                                    <div class="invalid-feedback">Please enter a valid URL.</div>
+                                </div>
+
+                                <!-- Blog Content -->
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" id="blogContent" name="blogContent" placeholder="Write your blog content here..." style="height: 20rem" required></textarea>
+                                    <label for="blogContent">Blog Content</label>
+                                    <div class="invalid-feedback">Blog content is required.</div>
+                                </div>
+
+                                <!-- Tags -->
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="tags" name="tags" type="text" placeholder="Enter tags separated by commas..." />
+                                    <label for="tags">Tags (comma separated, optional)</label>
+                                    <small class="form-text text-muted">Example: travel, adventure, photography</small>
+                                </div>
+
+                                <!-- Publish Status -->
+                                <div class="mb-3">
+                                    <label class="form-label">Publish Status</label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="publishStatus" id="publishDraft" value="draft" checked>
+                                        <label class="form-check-label" for="publishDraft">
+                                            Save as Draft
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="publishStatus" id="publishNow" value="publish">
+                                        <label class="form-check-label" for="publishNow">
+                                            Publish Now
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <br />
+                                
+                                <!-- Submit success message-->
+                                <div class="d-none" id="submitSuccessMessage">
+                                    <div class="alert alert-success text-center mb-3">
+                                        <div class="fw-bolder">Blog post created successfully!</div>
+                                        Your blog post has been saved.
+                                    </div>
+                                </div>
+                                
+                                <!-- Submit error message-->
+                                <div class="d-none" id="submitErrorMessage">
+                                    <div class="alert alert-danger text-center mb-3">
+                                        Error creating blog post! Please try again.
+                                    </div>
+                                </div>
+                                
+                                <!-- Submit Buttons-->
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button class="btn btn-secondary" type="reset">Clear Form</button>
+                                    <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Create Blog Post</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#!">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fas fa-circle fa-stack-2x"></i>
+                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2023</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- Custom JS for form handling-->
+        <script src="js/create-blog.js"></script>
+    </body>
+</html>
