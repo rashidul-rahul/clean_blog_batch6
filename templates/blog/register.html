@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Author Registration - Clean Blog</title>
+{% endblock %}
+
+{% block header %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('{% static 'blog/assets/img/contact-bg.jpg' %}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>Author Registration</h1>
+                    <span class="subheading">Create your account to start blogging</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-6 col-xl-5">
+                <p class="text-center mb-4">Please fill in the form below to create your author account.</p>
+
+                <!-- Django Messages -->
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+                <div class="my-5">
+                    <form id="registerForm" action="{% url 'register' %}" method="POST">
+                        {% csrf_token %}
+
+                        <!-- First Name -->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="firstName" name="first_name" type="text" placeholder="John"
+                                required />
+                            <label for="firstName">First Name</label>
+                            <div class="invalid-feedback">First name is required.</div>
+                        </div>
+
+                        <!-- Last Name -->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="lastName" name="last_name" type="text" placeholder="Doe" />
+                            <label for="lastName">Last Name (Optional)</label>
+                        </div>
+
+                        <!-- Email Address -->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="email" name="email" type="email"
+                                placeholder="name@example.com" required />
+                            <label for="email">Email Address</label>
+                            <div class="invalid-feedback">A valid email is required.</div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="password" name="password" type="password"
+                                placeholder="Password" required minlength="8" />
+                            <label for="password">Password</label>
+                            <div class="invalid-feedback">Password must be at least 8 characters.</div>
+                            <small class="form-text text-muted">Must be at least 8 characters long.</small>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="confirmPassword" name="confirm_password" type="password"
+                                placeholder="Confirm Password" required />
+                            <label for="confirmPassword">Confirm Password</label>
+                            <div class="invalid-feedback">Passwords must match.</div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="agreeTerms" name="agree_terms" required>
+                            <label class="form-check-label" for="agreeTerms">
+                                I agree to the <a href="#!">Terms and Conditions</a>
+                            </label>
+                            <div class="invalid-feedback">You must agree to the terms and conditions.</div>
+                        </div>
+
+                        <br />
+
+                        <!-- Submit Button-->
+                        <div class="d-grid">
+                            <button class="btn btn-primary text-uppercase" id="submitButton"
+                                type="submit">Register</button>
+                        </div>
+
+                        <!-- Additional Links -->
+                        <div class="text-center mt-3">
+                            <small class="text-muted">
+                                Already have an account? <a href="{% url 'login' %}">Login here</a>
+                            </small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Password Validation Script -->
+<script>
+    document.getElementById('registerForm').addEventListener('submit', function (event) {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            event.preventDefault();
+            confirmPasswordInput.setCustomValidity('Passwords must match.');
+            confirmPasswordInput.classList.add('is-invalid');
+        } else {
+            confirmPasswordInput.setCustomValidity('');
+            confirmPasswordInput.classList.remove('is-invalid');
+        }
+    });
+
+    // Clear custom validation on input
+    document.getElementById('confirmPassword').addEventListener('input', function () {
+        this.setCustomValidity('');
+        this.classList.remove('is-invalid');
+    });
+</script>
+{% endblock %}
