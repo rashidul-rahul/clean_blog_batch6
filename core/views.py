@@ -18,3 +18,19 @@ def index(request):
 
 def about(request):
     return render(request, 'blog/about.html')
+
+
+def author_login(request):
+    return render(request, 'blog/login.html')
+
+
+def author_logout(request):
+    return render(request, 'blog/login.html')
+
+
+def author_dashboard(request):
+    return render(request, 'blog/dashboard.html')
+
+
+def create_blog(request):
+    return render(request, 'blog/blog_form.html')

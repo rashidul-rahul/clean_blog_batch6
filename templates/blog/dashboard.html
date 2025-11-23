@@ -1,0 +1,321 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Author Dashboard - Clean Blog</title>
+{% endblock %}
+
+{% block header %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('{% static 'blog/assets/img/home-bg.jpg' %}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>My Dashboard</h1>
+                    <span class="subheading">Manage your blog posts</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+<!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-10 col-xl-9">
+                <!-- Welcome Message -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h2>Welcome back, John Doe!</h2>
+                        <p class="text-muted">You have 5 blog posts</p>
+                    </div>
+                    <div>
+                        <a href="#!" class="btn btn-primary text-uppercase">
+                            <i class="fas fa-plus"></i> Create New Post
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Filter/Search Options -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <form method="GET" class="row g-3">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="search" placeholder="Search posts...">
+                            </div>
+                            <div class="col-md-4">
+                                <select class="form-select" name="status">
+                                    <option value="">All Status</option>
+                                    <option value="draft">Draft</option>
+                                    <option value="published">Published</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-secondary w-100">Filter</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Blog Posts Table -->
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">My Blog Posts</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Created</th>
+                                        <th scope="col">Updated</th>
+                                        <th scope="col" class="text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>
+                                            <strong>Man must explore, and this is exploration at its greatest</strong>
+                                            <br>
+                                            <small class="text-muted">Problems look mighty small from 150 miles
+                                                up</small>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-success">Published</span>
+                                        </td>
+                                        <td>
+                                            <small>Sep 24, 2023</small>
+                                        </td>
+                                        <td>
+                                            <small>Sep 25, 2023</small>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <a href="#!" class="btn btn-outline-primary" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <a href="#!" class="btn btn-outline-secondary" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <button type="button" class="btn btn-outline-danger" title="Delete"
+                                                    onclick="confirmDelete(1, 'Man must explore, and this is exploration at its greatest')">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>
+                                            <strong>I believe every human has a finite number of heartbeats</strong>
+                                            <br>
+                                            <small class="text-muted">I don't intend to waste any of mine</small>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-success">Published</span>
+                                        </td>
+                                        <td>
+                                            <small>Sep 18, 2023</small>
+                                        </td>
+                                        <td>
+                                            <small>Sep 20, 2023</small>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <a href="#!" class="btn btn-outline-primary" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <a href="#!" class="btn btn-outline-secondary" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <button type="button" class="btn btn-outline-danger" title="Delete"
+                                                    onclick="confirmDelete(2, 'I believe every human has a finite number of heartbeats')">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>
+                                            <strong>Science has not yet mastered prophecy</strong>
+                                            <br>
+                                            <small class="text-muted">We predict too much for the next year...</small>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-warning text-dark">Draft</span>
+                                        </td>
+                                        <td>
+                                            <small>Aug 24, 2023</small>
+                                        </td>
+                                        <td>
+                                            <small>Nov 15, 2023</small>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <a href="#!" class="btn btn-outline-primary" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <a href="#!" class="btn btn-outline-secondary" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <button type="button" class="btn btn-outline-danger" title="Delete"
+                                                    onclick="confirmDelete(3, 'Science has not yet mastered prophecy')">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">4</th>
+                                        <td>
+                                            <strong>Failure is not an option</strong>
+                                            <br>
+                                            <small class="text-muted">Many say exploration is part of our
+                                                destiny...</small>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-success">Published</span>
+                                        </td>
+                                        <td>
+                                            <small>Jul 8, 2023</small>
+                                        </td>
+                                        <td>
+                                            <small>Jul 10, 2023</small>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <a href="#!" class="btn btn-outline-primary" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <a href="#!" class="btn btn-outline-secondary" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <button type="button" class="btn btn-outline-danger" title="Delete"
+                                                    onclick="confirmDelete(4, 'Failure is not an option')">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">5</th>
+                                        <td>
+                                            <strong>The Dreams of Yesterday</strong>
+                                            <br>
+                                            <small class="text-muted">Are the hopes of today and reality of
+                                                tomorrow</small>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-warning text-dark">Draft</span>
+                                        </td>
+                                        <td>
+                                            <small>Nov 18, 2023</small>
+                                        </td>
+                                        <td>
+                                            <small>Nov 22, 2023</small>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="btn-group btn-group-sm" role="group">
+                                                <a href="#!" class="btn btn-outline-primary" title="View">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                <a href="#!" class="btn btn-outline-secondary" title="Edit">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <button type="button" class="btn btn-outline-danger" title="Delete"
+                                                    onclick="confirmDelete(5, 'The Dreams of Yesterday')">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <span class="page-link">Previous</span>
+                        </li>
+                        <li class="page-item active"><span class="page-link">1</span></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#!">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#!">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#!">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete "<strong id="deletePostTitle"></strong>"? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form id="deleteForm" method="POST" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    function confirmDelete(postId, postTitle) {
+        // Set the post title in the modal
+        document.getElementById('deletePostTitle').textContent = postTitle;
+
+        // Set the form action to the delete URL
+        const deleteForm = document.getElementById('deleteForm');
+        deleteForm.action = `/blog/delete/${postId}/`; // Update this URL according to your URL pattern
+
+        // Show the modal
+        const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        deleteModal.show();
+    }
+
+    // Show success message if redirected after delete
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('deleted') === 'true') {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-success alert-dismissible fade show';
+        alertDiv.innerHTML = '<strong>Success!</strong> Blog post deleted successfully. <button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+        document.querySelector('.container').prepend(alertDiv);
+
+        // Remove the parameter from URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+</script>
+{% endblock %}
